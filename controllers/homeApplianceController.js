@@ -7,13 +7,13 @@ const uploadFiles = require("../multer")
 homeApplianceRouter.post("/create",uploadFiles, async (req, res) => {
 
     try {
-        const { title, price, brand, type,rating,quantity, description } = req.body
+        const { title, price, brand, type,rating,quantity, description,category} = req.body
         const image = req.file;
         if(!image){
             res.status(400).json({message:"Please select the image"})
         }
         const createHomeAppliance = new homeAppliance({
-            title, price, image:image?.path, brand, type,rating,quantity, description 
+            title, price, image:image?.path, brand, type,rating,quantity, description,category
         })
         await createHomeAppliance.save()
         if(createHomeAppliance._id){

@@ -8,13 +8,13 @@ clothsRouter.post("/create", uploadFiles, async (req, res) => {
 
     try {
 
-        const { title, price, gender, type, size, color,rating, quantity, description } = req.body
+        const { title, price, gender, type, size, color,rating, quantity, description,category } = req.body
         const image = req.file;
         if (!image) {
             res.status(400).json({ message: "Please select the image" })
         }
         const createCloths = new cloths({
-            title, price,image:image?.path, gender, type, size, color, rating, quantity, description
+            title, price,image:image?.path, gender, type, size, color, rating, quantity, description,category
         })
         await createCloths.save()
         if (createCloths._id) {

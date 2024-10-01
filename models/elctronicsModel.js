@@ -53,6 +53,10 @@ const electronicsShema = new mongoose.Schema({
     type:{
         type:String,
         required:true
+    },
+    category:{
+        type:String,
+        required:true
     }
 })
 
